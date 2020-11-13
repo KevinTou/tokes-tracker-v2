@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core';
 
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
+import {
+  makeStyles,
+  Avatar,
+  Button,
+  TextField,
+  Link,
+  Grid,
+  Typography,
+  Container,
+  Paper,
+} from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import Paper from '@material-ui/core/Paper';
 
 import { login } from '../actions';
 
