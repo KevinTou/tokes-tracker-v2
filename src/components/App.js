@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core';
+import amplitude from 'amplitude-js';
 
 // Components
 import { PrivateRoute } from '../utils/PrivateRoute';
@@ -20,6 +21,12 @@ const useStyles = makeStyles({
 
 function App() {
   const classes = useStyles();
+
+  // useEffect(() => {
+  //   amplitude.getInstance().init(process.env.REACT_APP_API_KEY);
+
+  //   return () => console.log('clean-up');
+  // }, []);
 
   return (
     <div className={classes.background}>
