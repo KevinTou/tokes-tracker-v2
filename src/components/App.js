@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core';
 import amplitude from 'amplitude-js';
@@ -10,6 +10,7 @@ import Landing from './Landing';
 import Login from './Login';
 import Navigation from './Navigation';
 import Register from './Register';
+import ResponsiveDrawer from './ResponsiveDrawer';
 
 const useStyles = makeStyles({
   background: {
@@ -21,6 +22,11 @@ const useStyles = makeStyles({
 
 function App() {
   const classes = useStyles();
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
   // useEffect(() => {
   //   amplitude.getInstance().init(process.env.REACT_APP_API_KEY);
@@ -30,7 +36,11 @@ function App() {
 
   return (
     <div className={classes.background}>
-      <Navigation />
+      <Navigation handleDrawerToggle={handleDrawerToggle} />
+      <ResponsiveDrawer
+        handleDrawerToggle={handleDrawerToggle}
+        mobileOpen={mobileOpen}
+      />
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route path="/login" component={Login} />
