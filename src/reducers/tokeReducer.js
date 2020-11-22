@@ -31,6 +31,7 @@ export default function tokeReducer(state = initialState, action) {
       return {
         ...state,
         isLoading: true,
+        error: null,
       };
     case GET_TOKES_SUCCESS:
       return {
