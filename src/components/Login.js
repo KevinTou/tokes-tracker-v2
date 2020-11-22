@@ -19,7 +19,7 @@ import { login } from '../actions';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(7),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -46,7 +46,11 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = ({ login, history }) => {
   const classes = useStyles();
-  const [user, setUser] = useState({ email: '', password: '' });
+  const [user, setUser] = useState({
+    email: 'test@example.com',
+    password: 'test',
+  });
+  // const [user, setUser] = useState({ email: '', password: '' });
   const { email, password } = user;
 
   const handleChange = (event) => {
@@ -63,7 +67,7 @@ const Login = ({ login, history }) => {
   return (
     <Container component="main" maxWidth="xs">
       <div className={classes.paper}>
-        <Paper>
+        <Paper style={{ borderRadius: '12px' }}>
           <Container className={classes.container}>
             <Avatar className={classes.avatar}>
               <LockOutlinedIcon />
