@@ -94,22 +94,6 @@ const Navigation = ({ token, logout, handleDrawerToggle }) => {
                 open={open}
                 onClose={handleClose}
               >
-                {/* <MenuItem onClick={handleClose} component={Link} to="/login">
-                  Login
-                </MenuItem>
-                <MenuItem onClick={handleClose} component={Link} to="/register">
-                  Register
-                </MenuItem>
-                <MenuItem onClick={handleClose} component={Link} to="/">
-                  Home
-                </MenuItem>
-                <MenuItem
-                  onClick={handleClose}
-                  component={Link}
-                  to="/dashboard"
-                >
-                  Dashboard
-                </MenuItem> */}
                 <MenuItem
                   onClick={() => {
                     logout();

@@ -5,7 +5,6 @@ import {
   makeStyles,
   useTheme,
   Drawer,
-  Hidden,
   List,
   ListItem,
   Divider,
@@ -46,6 +45,10 @@ const ResponsiveDrawer = (props) => {
       <div className={classes.toolbar} />
       <List>
         <Divider />
+        <ListItem component={Link} onClick={props.handleDrawerToggle} to="/">
+          Home
+        </ListItem>
+        <Divider />
         <ListItem
           component={Link}
           onClick={props.handleDrawerToggle}
@@ -62,10 +65,6 @@ const ResponsiveDrawer = (props) => {
           Register
         </ListItem>
         <Divider />
-        <ListItem component={Link} onClick={props.handleDrawerToggle} to="/">
-          Home
-        </ListItem>
-        <Divider />
         <ListItem
           component={Link}
           onClick={props.handleDrawerToggle}
@@ -74,6 +73,18 @@ const ResponsiveDrawer = (props) => {
           Dashboard
         </ListItem>
         <Divider />
+        <ListItem component={Link} onClick={props.handleDrawerToggle} to="/add">
+          Add Toke
+        </ListItem>
+        <Divider />
+        {/* <ListItem
+          component={Link}
+          onClick={props.handleDrawerToggle}
+          to="/date"
+        >
+          Edit Date
+        </ListItem>
+        <Divider /> */}
       </List>
     </div>
   );
@@ -83,23 +94,21 @@ const ResponsiveDrawer = (props) => {
 
   return (
     <nav className={classes.drawer} aria-label="site links">
-      <Hidden implementation="js">
-        <Drawer
-          container={container}
-          variant="temporary"
-          anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-          open={props.mobileOpen}
-          onClose={props.handleDrawerToggle}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-          ModalProps={{
-            keepMounted: true,
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </Hidden>
+      <Drawer
+        container={container}
+        variant="temporary"
+        anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+        open={props.mobileOpen}
+        onClose={props.handleDrawerToggle}
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+        ModalProps={{
+          keepMounted: true,
+        }}
+      >
+        {drawer}
+      </Drawer>
     </nav>
   );
 };
