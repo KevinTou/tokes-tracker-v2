@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import dayjs from 'dayjs';
 
 import {
   makeStyles,
@@ -7,13 +10,16 @@ import {
   Hidden,
   Paper,
   Typography,
+  Button,
 } from '@material-ui/core';
 import {
   MobileDateRangePicker,
   DateRangeDelimiter,
   DesktopDateRangePicker,
-  DateRange,
+  // DateRange,
 } from '@material-ui/pickers';
+
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -41,11 +47,45 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     marginBottom: '3rem',
   },
+  buttonContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    marginTop: '2rem',
+  },
+  button: {
+    textTransform: 'none',
+  },
 }));
 
-const DatePicker = () => {
+const DatePicker = (props) => {
   const classes = useStyles();
+  const history = useHistory();
   const [value, setValue] = useState([null, null]);
+
+  const handleSave = async (event) => {
+    const [starting_period, ending_period] = value;
+
+    await axiosWithAuth().put('api/users/' + props.user_id, {
+      starting_period,
+      ending_period,
+    });
+
+    localStorage.setItem(
+      'starting_period',
+      JSON.stringify(
+        starting_period ? dayjs(starting_period).format('MMM[ ]D') : null
+      )
+    );
+
+    localStorage.setItem(
+      'ending_period',
+      JSON.stringify(
+        ending_period ? dayjs(ending_period).format('MMM[ ]D') : null
+      )
+    );
+
+    history.push('/dashboard');
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -82,10 +122,37 @@ const DatePicker = () => {
               )}
             />
           </Hidden>
+          <div className={classes.buttonContainer}>
+            <Button
+              className={classes.button}
+              variant="contained"
+              color="primary"
+              onClick={handleSave}
+            >
+              Save
+            </Button>
+            <Button
+              className={classes.button}
+              variant="contained"
+              color="secondary"
+              component={Link}
+              to="/dashboard"
+            >
+              Cancel
+            </Button>
+          </div>
         </Paper>
       </div>
     </Container>
   );
 };
 
-export default DatePicker;
+const mapStateToProps = (state) => {
+  const { user_id } = state.auth;
+
+  return {
+    user_id: user_id,
+  };
+};
+
+export default connect(mapStateToProps, {})(DatePicker);
