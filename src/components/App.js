@@ -11,6 +11,8 @@ import Login from './Login';
 import Navigation from './Navigation';
 import Register from './Register';
 import ResponsiveDrawer from './ResponsiveDrawer';
+import AddToke from './AddToke';
+import DatePicker from './DatePicker';
 
 const useStyles = makeStyles({
   background: {
@@ -46,6 +48,8 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <PrivateRoute path="/dashboard" component={Dashboard} />
+        <PrivateRoute path="/add" component={AddToke} />
+        <PrivateRoute path="/date" component={DatePicker} />
         <Redirect to="/dashboard" />
       </Switch>
     </div>

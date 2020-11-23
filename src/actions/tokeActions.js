@@ -1,10 +1,11 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { logout } from '../actions';
 
 export const GET_TOKES = 'GET_TOKES';
 export const GET_TOKES_SUCCESS = 'GET_TOKES_SUCCESS';
 export const GET_TOKES_ERROR = 'GET_TOKES_ERROR';
 
-export const getTokes = (user_id) => async (dispatch) => {
+export const getTokes = (user_id, history) => async (dispatch) => {
   dispatch({ type: GET_TOKES });
 
   try {
@@ -16,6 +17,8 @@ export const getTokes = (user_id) => async (dispatch) => {
     });
   } catch (err) {
     dispatch({ type: GET_TOKES_ERROR, payload: err });
+    logout();
+    history.push('/login');
   }
 };
 
