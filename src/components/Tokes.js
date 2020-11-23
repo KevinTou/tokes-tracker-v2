@@ -58,11 +58,11 @@ const Tokes = ({ tokes }) => {
           renderTokes(tokes)
         )}
       </List>
-      <div className={classes.buttonContainer}>
+      {/* <div className={classes.buttonContainer}>
         {tokes.length > 3 && (
           <Button className={classes.button}>See All</Button>
         )}
-      </div>
+      </div> */}
     </>
   );
 };
