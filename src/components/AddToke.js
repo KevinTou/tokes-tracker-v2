@@ -53,7 +53,7 @@ const AddToke = (props) => {
   const classes = useStyles();
   const history = useHistory();
   const [date, setDate] = useState(new Date());
-  const [amount, setAmount] = useState(null);
+  const [amount, setAmount] = useState('');
 
   const handleChange = (event) => {
     setAmount(event.target.value);
