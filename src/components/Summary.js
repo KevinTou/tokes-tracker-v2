@@ -23,9 +23,7 @@ const useStyles = makeStyles((theme) => ({
     background: 'linear-gradient(to bottom right, #FFEAE6, #FFBFB3)',
     borderRadius: '12px',
   },
-  cardHeader: {
-    // color: '',
-  },
+  cardHeader: {},
   cardContent: {
     flexGrow: 2,
     display: 'flex',
@@ -43,6 +41,27 @@ const useStyles = makeStyles((theme) => ({
 const Summary = ({ tokes }) => {
   const classes = useStyles();
   const history = useHistory();
+
+  const amount = tokes.reduce((acc, curr) => acc + curr.amount, 0).toFixed(2);
+
+  let date = () => {
+    const starting_period = JSON.parse(
+      window.localStorage.getItem('starting_period')
+    );
+    const ending_period = JSON.parse(
+      window.localStorage.getItem('ending_period')
+    );
+
+    if (starting_period && ending_period) {
+      return `${starting_period}-${ending_period}`;
+    } else if (starting_period) {
+      return `SINCE ${starting_period}`;
+    } else if (ending_period) {
+      return `BEFORE ${ending_period}`;
+    } else {
+      return `SET DATE RANGE`;
+    }
+  };
 
   return (
     <>
@@ -65,7 +84,7 @@ const Summary = ({ tokes }) => {
         />
         <CardContent className={classes.cardContent}>
           <Typography variant="h4" color="textPrimary" component="p">
-            ${tokes.reduce((acc, curr) => acc + curr.amount, 0).toFixed(2)}
+            ${amount}
           </Typography>
         </CardContent>
         <Divider />
@@ -81,11 +100,8 @@ const Summary = ({ tokes }) => {
           <Typography variant="body2" component="p">
             DATES
           </Typography>
-          {/* <Typography variant="body2" component="p">
-            Oct 16-Oct 19
-          </Typography> */}
           <Typography variant="body2" component="p">
-            SET DATE RANGE
+            {date()}
           </Typography>
         </CardActions>
       </Card>
