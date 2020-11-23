@@ -96,7 +96,7 @@ const AddToke = (props) => {
                 required
                 fullWidth
                 name="amount"
-                label="Amount"
+                label="Amount ($)"
                 type="number"
                 id="amount"
                 onChange={handleChange}
