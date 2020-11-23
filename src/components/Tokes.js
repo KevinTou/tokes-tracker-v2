@@ -1,5 +1,11 @@
 import React from 'react';
-import { makeStyles, Divider, Typography, List } from '@material-ui/core';
+import {
+  makeStyles,
+  Divider,
+  Typography,
+  List,
+  Button,
+} from '@material-ui/core';
 
 import Toke from './Toke';
 
@@ -22,9 +28,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '.75rem 1rem',
     fontSize: '1rem',
     color: 'white',
-    border: 'none',
-    backgroundColor: 'transparent',
-    cursor: 'pointer',
+    textTransform: 'none',
   },
   divider: {
     backgroundColor: 'white',
@@ -56,7 +60,7 @@ const Tokes = ({ tokes }) => {
       </List>
       <div className={classes.buttonContainer}>
         {tokes.length > 3 && (
-          <button className={classes.button}>See All</button>
+          <Button className={classes.button}>See All</Button>
         )}
       </div>
     </>

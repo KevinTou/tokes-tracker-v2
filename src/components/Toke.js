@@ -17,11 +17,17 @@ const useStyles = makeStyles({
   },
   button: {
     backgroundColor: 'white',
+    borderRadius: '12px',
+    '&:hover': {
+      backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    },
   },
 });
 
 const Toke = ({ toke }) => {
   const classes = useStyles();
+  const date = dayjs(toke.date).format('ddd[, ]MMM[ ]D');
+  const amount = toke.amount.toFixed(2);
 
   return (
     <ListItem>
@@ -34,10 +40,8 @@ const Toke = ({ toke }) => {
           <AttachMoneyIcon />
         </IconButton>
       </ListItemAvatar>
-      <ListItemText primary={`${dayjs(toke.date).format('ddd[, ]MMM[ ]D')}`} />
-      <ListItemSecondaryAction>
-        ${toke.amount.toFixed(2)}
-      </ListItemSecondaryAction>
+      <ListItemText primary={`${date}`} />
+      <ListItemSecondaryAction>${amount}</ListItemSecondaryAction>
     </ListItem>
   );
 };
