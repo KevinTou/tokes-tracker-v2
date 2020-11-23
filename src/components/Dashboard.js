@@ -41,7 +41,7 @@ const Dashboard = ({ tokes, getTokes, user_id, error, isLoading, history }) => {
         <Fab
           className={classes.button}
           component={Link}
-          to="/add"
+          to="/tokes/add"
           aria-label="add"
         >
           <AddIcon />

@@ -75,7 +75,7 @@ const Summary = ({ tokes }) => {
               //   amplitude.getInstance().logEvent('Settings button clicked.');
               //   console.log('clicked');
               // }}
-              onClick={() => history.push('/date')}
+              onClick={() => history.push('/settings/date')}
             >
               <MoreVertIcon />
             </IconButton>

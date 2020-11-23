@@ -60,7 +60,11 @@ const ResponsiveDrawer = (props) => {
               Dashboard
             </ListItem>
             <Divider />
-            <ListItem component={Link} onClick={handleDrawerToggle} to="/add">
+            <ListItem
+              component={Link}
+              onClick={handleDrawerToggle}
+              to="/tokes/add"
+            >
               Add Toke
             </ListItem>
           </>
