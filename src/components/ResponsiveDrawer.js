@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import {
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ResponsiveDrawer = (props) => {
-  const { window } = props;
+  const { window, token, handleDrawerToggle, mobileOpen } = props;
   const classes = useStyles();
   const theme = useTheme();
 
@@ -45,46 +46,41 @@ const ResponsiveDrawer = (props) => {
       <div className={classes.toolbar} />
       <List>
         <Divider />
-        <ListItem component={Link} onClick={props.handleDrawerToggle} to="/">
+        <ListItem component={Link} onClick={handleDrawerToggle} to="/">
           Home
         </ListItem>
+        {token ? (
+          <>
+            <Divider />
+            <ListItem
+              component={Link}
+              onClick={handleDrawerToggle}
+              to="/dashboard"
+            >
+              Dashboard
+            </ListItem>
+            <Divider />
+            <ListItem component={Link} onClick={handleDrawerToggle} to="/add">
+              Add Toke
+            </ListItem>
+          </>
+        ) : (
+          <>
+            <Divider />
+            <ListItem component={Link} onClick={handleDrawerToggle} to="/login">
+              Login
+            </ListItem>
+            <Divider />
+            <ListItem
+              component={Link}
+              onClick={handleDrawerToggle}
+              to="/register"
+            >
+              Register
+            </ListItem>
+          </>
+        )}
         <Divider />
-        <ListItem
-          component={Link}
-          onClick={props.handleDrawerToggle}
-          to="/login"
-        >
-          Login
-        </ListItem>
-        <Divider />
-        <ListItem
-          component={Link}
-          onClick={props.handleDrawerToggle}
-          to="/register"
-        >
-          Register
-        </ListItem>
-        <Divider />
-        <ListItem
-          component={Link}
-          onClick={props.handleDrawerToggle}
-          to="/dashboard"
-        >
-          Dashboard
-        </ListItem>
-        <Divider />
-        <ListItem component={Link} onClick={props.handleDrawerToggle} to="/add">
-          Add Toke
-        </ListItem>
-        <Divider />
-        {/* <ListItem
-          component={Link}
-          onClick={props.handleDrawerToggle}
-          to="/date"
-        >
-          Edit Date
-        </ListItem>
-        <Divider /> */}
       </List>
     </div>
   );
@@ -98,8 +94,8 @@ const ResponsiveDrawer = (props) => {
         container={container}
         variant="temporary"
         anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-        open={props.mobileOpen}
-        onClose={props.handleDrawerToggle}
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
         classes={{
           paper: classes.drawerPaper,
         }}
@@ -113,4 +109,12 @@ const ResponsiveDrawer = (props) => {
   );
 };
 
-export default ResponsiveDrawer;
+const mapStateToProps = (state) => {
+  const { token } = state.auth;
+
+  return {
+    token: token,
+  };
+};
+
+export default connect(mapStateToProps, {})(ResponsiveDrawer);
