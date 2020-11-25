@@ -106,6 +106,7 @@ const DatePicker = (props) => {
                   <TextField {...endProps} />
                 </React.Fragment>
               )}
+              disableFuture={true}
             />
           </Hidden>
           <Hidden smDown>
@@ -120,6 +121,7 @@ const DatePicker = (props) => {
                   <TextField {...endProps} />
                 </React.Fragment>
               )}
+              disableFuture={true}
             />
           </Hidden>
           <div className={classes.buttonContainer}>

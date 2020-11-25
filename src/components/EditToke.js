@@ -88,6 +88,7 @@ const EditToke = (props) => {
                 value={date}
                 onChange={(newDate) => setDate(newDate)}
                 renderInput={(props) => <TextField {...props} />}
+                disableFuture={true}
                 required
               />
               <TextField
