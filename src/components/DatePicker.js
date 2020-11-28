@@ -16,7 +16,6 @@ import {
   MobileDateRangePicker,
   DateRangeDelimiter,
   DesktopDateRangePicker,
-  // DateRange,
 } from '@material-ui/pickers';
 
 import { axiosWithAuth } from '../utils/axiosWithAuth';
