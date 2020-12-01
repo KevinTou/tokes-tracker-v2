@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
 const EditToke = (props) => {
   const classes = useStyles();
   const history = useHistory();
-  const [date, setDate] = useState(props.toke.date);
+  const [date, setDate] = useState(dayjs(props.toke.date).format());
   const [amount, setAmount] = useState(`${props.toke.amount}`);
 
   const handleChange = (event) => {
@@ -87,7 +87,9 @@ const EditToke = (props) => {
                 label="Date"
                 value={date}
                 onChange={(newDate) => setDate(newDate)}
-                renderInput={(props) => <TextField {...props} />}
+                renderInput={(props) => {
+                  return <TextField {...props} />
+                }}
                 disableFuture={true}
                 required
               />
