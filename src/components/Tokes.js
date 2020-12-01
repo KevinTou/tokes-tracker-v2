@@ -4,7 +4,7 @@ import {
   Divider,
   Typography,
   List,
-  Button,
+  // Button,
 } from '@material-ui/core';
 
 import Toke from './Toke';
@@ -55,8 +55,8 @@ const Tokes = ({ tokes }) => {
             Add Your First Tip
           </Typography>
         ) : (
-          renderTokes(tokes)
-        )}
+            renderTokes(tokes)
+          )}
       </List>
       {/* <div className={classes.buttonContainer}>
         {tokes.length > 3 && (

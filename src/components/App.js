@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core';
-import amplitude from 'amplitude-js';
+// import amplitude from 'amplitude-js';
 
 // Components
 import { PrivateRoute } from '../utils/PrivateRoute';

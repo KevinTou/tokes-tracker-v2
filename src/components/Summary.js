@@ -1,5 +1,5 @@
 import React from 'react';
-import amplitude from 'amplitude-js';
+// import amplitude from 'amplitude-js';
 
 import {
   makeStyles,
@@ -91,11 +91,11 @@ const Summary = ({ tokes }) => {
         <CardActions
           disableSpacing
           className={classes.cardFooter}
-          // onClick={() =>
-          //   amplitude
-          //     .getInstance()
-          //     .logEvent('Tried to click dates to open prompt.')
-          // }
+        // onClick={() =>
+        //   amplitude
+        //     .getInstance()
+        //     .logEvent('Tried to click dates to open prompt.')
+        // }
         >
           <Typography variant="body2" component="p">
             DATES
