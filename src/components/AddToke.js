@@ -15,6 +15,8 @@ import { DatePicker } from '@material-ui/pickers';
 
 import { addToke } from '../actions';
 
+import CameraButton from './CameraButton';
+
 const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
@@ -48,6 +50,12 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '2rem',
     width: '100%',
   },
+  divider: {
+    color: 'white',
+    textAlign: 'center',
+    marginTop: '2rem',
+    marginBottom: '2rem',
+  }
 }));
 
 const AddToke = (props) => {
@@ -76,59 +84,65 @@ const AddToke = (props) => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <div className={classes.paper}>
-        <Paper className={classes.content}>
-          <Container className={classes.container}>
-            <Typography component="h1" variant="h5">
-              Add a Toke
+    <>
+      <Container component="main" maxWidth="xs">
+        <div className={classes.paper}>
+          <Paper className={classes.content}>
+            <Container className={classes.container}>
+              <Typography component="h1" variant="h5">
+                Add a Toke
             </Typography>
-            <form className={classes.form}>
-              <DatePicker
-                label="Date"
-                value={date}
-                onChange={(newDate) => setDate(newDate)}
-                renderInput={(props) => <TextField {...props} />}
-                disableFuture={true}
-                required
-              />
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="amount"
-                label="Amount ($)"
-                type="number"
-                id="amount"
-                onChange={handleChange}
-                value={amount}
-              />
-            </form>
-            <div className={classes.buttonContainer}>
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                className={classes.button}
-                onClick={handleSubmit}
-              >
-                Submit
+              <form className={classes.form}>
+                <DatePicker
+                  label="Date"
+                  value={date}
+                  onChange={(newDate) => setDate(newDate)}
+                  renderInput={(props) => <TextField {...props} />}
+                  disableFuture={true}
+                  required
+                />
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="amount"
+                  label="Amount ($)"
+                  type="number"
+                  id="amount"
+                  onChange={handleChange}
+                  value={amount}
+                />
+              </form>
+              <div className={classes.buttonContainer}>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  className={classes.button}
+                  onClick={handleSubmit}
+                >
+                  Submit
               </Button>
-              <Button
-                className={classes.button}
-                variant="contained"
-                color="secondary"
-                component={Link}
-                to="/dashboard"
-              >
-                Cancel
+                <Button
+                  className={classes.button}
+                  variant="contained"
+                  color="secondary"
+                  component={Link}
+                  to="/dashboard"
+                >
+                  Cancel
               </Button>
-            </div>
-          </Container>
-        </Paper>
+              </div>
+            </Container>
+          </Paper>
+        </div>
+      </Container>
+      <div className={classes.divider}>
+        ------------- Or choose -------------
       </div>
-    </Container>
+      <CameraButton />
+    </>
   );
 };
 
