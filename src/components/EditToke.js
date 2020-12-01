@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: theme.spacing(3, 0, 0),
+    textTransform: 'none',
   },
   buttonContainer: {
     display: 'flex',
