@@ -18,7 +18,7 @@ const CameraButton = () => {
   const classes = useStyles();
   return (
     <div className={classes.container}>
-      <Typography variant="h4">Camera</Typography>
+      <Typography variant="h5">Camera</Typography>
       <IconButton color="inherit" onClick={() => {
         alert('Feature coming soon!')
         //   amplitude.getInstance().logEvent('Camera button clicked.');
