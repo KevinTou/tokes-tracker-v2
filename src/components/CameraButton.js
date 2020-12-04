@@ -1,7 +1,7 @@
 import React from 'react'
 // import amplitude from 'amplitude-js';
 
-import { makeStyles, IconButton, Typography } from '@material-ui/core';
+import { makeStyles, Button, Typography } from '@material-ui/core';
 import { Photo } from '@material-ui/icons';
 
 const useStyles = makeStyles({
@@ -12,6 +12,10 @@ const useStyles = makeStyles({
     alignItems: 'center',
     color: 'white'
   },
+  button: {
+    textTransform: 'none',
+    marginTop: '0.5rem'
+  }
 })
 
 const CameraButton = () => {
@@ -19,12 +23,17 @@ const CameraButton = () => {
   return (
     <div className={classes.container}>
       <Typography variant="h5">Camera</Typography>
-      <IconButton color="inherit" onClick={() => {
-        alert('Feature coming soon!')
-        //   amplitude.getInstance().logEvent('Camera button clicked.');
-      }}>
-        <Photo />
-      </IconButton>
+      <Button
+        variant="contained"
+        color="primary"
+        className={classes.button}
+        endIcon={<Photo />}
+        onClick={() => {
+          alert('Feature coming soon!')
+          //   amplitude.getInstance().logEvent('Camera button clicked.');
+        }}>
+        Use a Photo
+      </Button>
     </div>
   )
 }
