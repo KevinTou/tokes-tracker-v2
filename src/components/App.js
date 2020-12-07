@@ -15,6 +15,7 @@ import ResponsiveDrawer from './ResponsiveDrawer';
 import AddToke from './AddToke';
 import EditToke from './EditToke';
 import DatePicker from './DatePicker';
+import TokesDetail from './TokesDetail';
 
 const useStyles = makeStyles({
   background: {
@@ -50,6 +51,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <PrivateRoute path="/dashboard" component={Dashboard} />
+        <PrivateRoute path="/tokes/all" component={TokesDetail} />
         <PrivateRoute path="/tokes/add" component={AddToke} />
         <PrivateRoute path="/tokes/edit/:id" component={EditToke} />
         <PrivateRoute path="/settings/date" component={DatePicker} />

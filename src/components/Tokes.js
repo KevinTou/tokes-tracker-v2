@@ -4,17 +4,18 @@ import {
   Divider,
   Typography,
   List,
-  // Button,
+  Button,
 } from '@material-ui/core';
 
 import Toke from './Toke';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   list: {
     color: 'white',
     height: '200px',
     // height: '100%',
-    overflow: 'auto',
+    overflow: 'hidden',
     margin: '1rem 0 0 0',
   },
   message: {
@@ -58,11 +59,11 @@ const Tokes = ({ tokes }) => {
             renderTokes(tokes)
           )}
       </List>
-      {/* <div className={classes.buttonContainer}>
+      <div className={classes.buttonContainer}>
         {tokes.length > 3 && (
-          <Button className={classes.button}>See All</Button>
+          <Button component={Link} className={classes.button} to="/tokes/all">See All</Button>
         )}
-      </div> */}
+      </div>
     </>
   );
 };
