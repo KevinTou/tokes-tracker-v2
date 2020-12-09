@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   divider: {
     color: 'white',
     textAlign: 'center',
-    marginTop: '2rem',
+    marginTop: '3rem',
     marginBottom: '2rem',
   }
 }));
@@ -65,6 +65,7 @@ const AddToke = (props) => {
   const [amount, setAmount] = useState('');
 
   const handleChange = (event) => {
+    // Add validation
     setAmount(event.target.value);
   };
 
@@ -108,7 +109,7 @@ const AddToke = (props) => {
                   fullWidth
                   name="amount"
                   label="Amount ($)"
-                  type="number"
+                  type="tel"
                   id="amount"
                   onChange={handleChange}
                   value={amount}

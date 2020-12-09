@@ -57,6 +57,7 @@ const EditToke = (props) => {
   const [amount, setAmount] = useState(`${props.toke.amount}`);
 
   const handleChange = (event) => {
+    // Add validation
     setAmount(event.target.value);
   };
 
@@ -101,7 +102,7 @@ const EditToke = (props) => {
                 fullWidth
                 name="amount"
                 label="Amount ($)"
-                type="number"
+                type="tel"
                 id="amount"
                 onChange={handleChange}
                 value={amount}
