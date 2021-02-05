@@ -7,7 +7,7 @@ export const axiosWithAuth = () => {
     headers: {
       Authorization: token,
     },
-    baseURL: 'http://localhost:4000/',
-    // baseURL: 'https://tokes-tracker.herokuapp.com/',
+    // baseURL: 'http://localhost:4000/',
+    baseURL: 'https://tokes-tracker-v2-be.herokuapp.com',
   });
 };

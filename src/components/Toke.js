@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import dayjs from 'dayjs';
 
 import { setToke, deleteToke } from '../actions';
@@ -35,7 +34,6 @@ const useStyles = makeStyles({
 
 const Toke = ({ toke, deleteToke, setToke }) => {
   const classes = useStyles();
-  const history = useHistory();
   const date = dayjs(toke.date).format('ddd[, ]MMM[ ]D');
   const amount = toke.amount.toFixed(2);
   const [anchorEl, setAnchorEl] = useState(null);

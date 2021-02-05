@@ -1,17 +1,23 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import { makeStyles, Dialog, DialogContent } from '@material-ui/core';
+
+const useStyles = makeStyles({
+  dialog: {
+    backgroundColor: 'black'
+  },
+  dialogContent: {
+    backgroundColor: 'black',
+    border: '1px solid black'
+  }
+})
 
 const DialogWrapper = ({ open, handleClose, title, children }) => {
+  const classes = useStyles();
+
   return (
     <>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogContent>
+      <Dialog className={classes.dialog} open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <DialogContent className={classes.dialogContent}>
           {children}
         </DialogContent>
       </Dialog>

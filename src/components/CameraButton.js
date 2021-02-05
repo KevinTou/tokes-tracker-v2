@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    // color: 'white'
+    color: 'white'
   },
   button: {
     textTransform: 'none',

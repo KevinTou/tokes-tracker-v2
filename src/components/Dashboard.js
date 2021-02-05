@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { getTokes, logout } from '../actions';
 
 import { makeStyles, Container, Fab } from '@material-ui/core';
@@ -47,7 +46,6 @@ const Dashboard = ({ tokes, getTokes, user_id, error, isLoading, history }) => {
     <Container className={classes.content} component="main" maxWidth="xs">
       <Summary tokes={tokes} />
       <Tokes tokes={tokes} />
-      {/* Add Button */}
       <div className={classes.buttonContainer}>
         <Fab
           className={classes.button}
@@ -56,14 +54,6 @@ const Dashboard = ({ tokes, getTokes, user_id, error, isLoading, history }) => {
         >
           <AddIcon />
         </Fab>
-        {/* <Fab
-          className={classes.button}
-          component={Link}
-          to="/tokes/add"
-          aria-label="add"
-        >
-          <AddIcon />
-        </Fab> */}
       </div>
       <DialogWrapper open={open} handleClose={handleClose} title="Add Toke">
         <AddToke handleClose={handleClose} />
