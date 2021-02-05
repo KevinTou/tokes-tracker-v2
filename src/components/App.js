@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core';
 // Components
 import { PrivateRoute } from '../utils/PrivateRoute';
 import Dashboard from './Dashboard';
-import Landing from './Landing';
+// import Landing from './Landing';
 import Login from './Login';
 import Navigation from './Navigation';
 import Register from './Register';
