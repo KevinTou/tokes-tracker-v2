@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import amplitude from 'amplitude-js';
 
 import {
@@ -12,7 +12,8 @@ import {
   Divider,
 } from '@material-ui/core';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { useHistory } from 'react-router-dom';
+import DatePicker from './DatePicker';
+import DialogWrapper from './DialogWrapper';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -40,9 +41,17 @@ const useStyles = makeStyles((theme) => ({
 
 const Summary = ({ tokes }) => {
   const classes = useStyles();
-  const history = useHistory();
-
   const amount = tokes.reduce((acc, curr) => acc + curr.amount, 0).toFixed(2);
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   let date = () => {
     const starting_period = JSON.parse(
@@ -63,6 +72,7 @@ const Summary = ({ tokes }) => {
     }
   };
 
+
   return (
     <>
       <Card className={classes.card}>
@@ -75,7 +85,7 @@ const Summary = ({ tokes }) => {
               //   amplitude.getInstance().logEvent('Settings button clicked.');
               //   console.log('clicked');
               // }}
-              onClick={() => history.push('/settings/date')}
+              onClick={() => handleClickOpen()}
             >
               <MoreVertIcon />
             </IconButton>
@@ -105,6 +115,9 @@ const Summary = ({ tokes }) => {
           </Typography>
         </CardActions>
       </Card>
+      <DialogWrapper open={open} handleClose={handleClose} title="Date Picker">
+        <DatePicker handleClose={handleClose} />
+      </DialogWrapper>
     </>
   );
 };

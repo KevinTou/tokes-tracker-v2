@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import dayjs from 'dayjs';
 
 import { setToke, deleteToke } from '../actions';
@@ -17,6 +16,9 @@ import {
 } from '@material-ui/core';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 
+import DialogWrapper from './DialogWrapper';
+import EditToke from './EditToke';
+
 const useStyles = makeStyles({
   avatar: {
     color: 'black',
@@ -32,10 +34,18 @@ const useStyles = makeStyles({
 
 const Toke = ({ toke, deleteToke, setToke }) => {
   const classes = useStyles();
-  const history = useHistory();
   const date = dayjs(toke.date).format('ddd[, ]MMM[ ]D');
   const amount = toke.amount.toFixed(2);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  }
+
+  const handleDialogClose = () => {
+    setOpen(false);
+  }
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -70,15 +80,18 @@ const Toke = ({ toke, deleteToke, setToke }) => {
       >
         <MenuItem
           onClick={() => {
-            // handleClose();
+            handleClose();
             setToke(toke);
-            history.push(`/tokes/edit/${toke.id}`);
+            handleOpen();
           }}
         >
           Edit
         </MenuItem>
         <MenuItem onClick={() => deleteToke(toke.id)}>Delete</MenuItem>
       </Menu>
+      <DialogWrapper open={open} handleClose={handleDialogClose}>
+        <EditToke handleClose={handleDialogClose} />
+      </DialogWrapper>
     </>
   );
 };

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
 import dayjs from 'dayjs';
 
 import {
@@ -26,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   paper: {
-    marginTop: theme.spacing(7),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -60,7 +58,6 @@ const useStyles = makeStyles((theme) => ({
 
 const AddToke = (props) => {
   const classes = useStyles();
-  const history = useHistory();
   const [date, setDate] = useState(new Date());
   const [amount, setAmount] = useState('');
 
@@ -81,7 +78,7 @@ const AddToke = (props) => {
     };
 
     await props.addToke(newToke);
-    history.push('/dashboard');
+    props.handleClose();
   };
 
   return (
@@ -129,8 +126,7 @@ const AddToke = (props) => {
                   className={classes.button}
                   variant="contained"
                   color="secondary"
-                  component={Link}
-                  to="/dashboard"
+                  onClick={props.handleClose}
                 >
                   Cancel
               </Button>

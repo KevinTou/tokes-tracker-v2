@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { getTokes, logout } from '../actions';
 
 import { makeStyles, Container, Fab } from '@material-ui/core';
@@ -8,6 +7,8 @@ import AddIcon from '@material-ui/icons/Add';
 
 import Summary from './Summary';
 import Tokes from './Tokes';
+import AddToke from './AddToke';
+import DialogWrapper from './DialogWrapper';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -27,6 +28,15 @@ const useStyles = makeStyles((theme) => ({
 
 const Dashboard = ({ tokes, getTokes, user_id, error, isLoading, history }) => {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     getTokes(user_id, history);
@@ -36,17 +46,18 @@ const Dashboard = ({ tokes, getTokes, user_id, error, isLoading, history }) => {
     <Container className={classes.content} component="main" maxWidth="xs">
       <Summary tokes={tokes} />
       <Tokes tokes={tokes} />
-      {/* Add Button */}
       <div className={classes.buttonContainer}>
         <Fab
           className={classes.button}
-          component={Link}
-          to="/tokes/add"
+          onClick={handleClickOpen}
           aria-label="add"
         >
           <AddIcon />
         </Fab>
       </div>
+      <DialogWrapper open={open} handleClose={handleClose} title="Add Toke">
+        <AddToke handleClose={handleClose} />
+      </DialogWrapper>
     </Container>
   );
 };

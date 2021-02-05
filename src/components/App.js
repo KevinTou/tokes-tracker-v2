@@ -47,7 +47,7 @@ function App() {
         mobileOpen={mobileOpen}
       />
       <Switch>
-        <Route exact path="/" component={Landing} />
+        {/* <Route exact path="/" component={Landing} /> */}
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <PrivateRoute path="/dashboard" component={Dashboard} />

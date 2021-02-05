@@ -8,11 +8,11 @@ export const login = (user) => async (dispatch) => {
   dispatch({ type: LOGIN });
 
   try {
-    let { data } = await axios.post('http://localhost:4000/login', user);
-    // let { data } = await axios.post(
-    //   'https://tokes-tracker.herokuapp.com/login',
-    //   user
-    // );
+    // let { data } = await axios.post('http://localhost:4000/login', user);
+    let { data } = await axios.post(
+      'https://tokes-tracker-v2-be.herokuapp.com/login',
+      user
+    );
 
     localStorage.setItem('token', data.token);
     localStorage.setItem('user_id', data.user_id);
@@ -30,11 +30,11 @@ export const register = (user) => async (dispatch) => {
   dispatch({ type: REGISTER });
 
   try {
-    let { data } = await axios.post('http://localhost:4000/register', user);
-    // let { data } = await axios.post(
-    //   'https://tokes-tracker.herokuapp.com/register',
-    //   user
-    // );
+    // let { data } = await axios.post('http://localhost:4000/register', user);
+    let { data } = await axios.post(
+      'https://tokes-tracker-v2-be.herokuapp.com/register',
+      user
+    );
 
     localStorage.setItem('token', data.token);
     localStorage.setItem('user_id', data.user_id);
