@@ -35,7 +35,7 @@ const useStyles = makeStyles({
 const Toke = ({ toke, deleteToke, setToke }) => {
   const classes = useStyles();
   const date = dayjs(toke.date).format('ddd[, ]MMM[ ]D');
-  const amount = toke.amount.toFixed(2);
+  const amount = (+toke.amount).toFixed(2);
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
 
@@ -87,7 +87,7 @@ const Toke = ({ toke, deleteToke, setToke }) => {
         >
           Edit
         </MenuItem>
-        <MenuItem onClick={() => deleteToke(toke.id)}>Delete</MenuItem>
+        <MenuItem onClick={() => deleteToke(toke?.id)}>Delete</MenuItem>
       </Menu>
       <DialogWrapper open={open} handleClose={handleDialogClose}>
         <EditToke handleClose={handleDialogClose} />

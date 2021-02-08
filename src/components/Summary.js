@@ -41,8 +41,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Summary = ({ tokes }) => {
   const classes = useStyles();
-  const amount = tokes.reduce((acc, curr) => acc + curr.amount, 0).toFixed(2);
-
+  const amount = tokes.reduce((acc, curr) => acc + +curr.amount, 0).toFixed(2);
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
