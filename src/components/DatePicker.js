@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import dayjs from 'dayjs';
 
 import {
@@ -19,6 +19,7 @@ import {
 } from '@material-ui/pickers';
 
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { getTokes } from '../actions';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -83,7 +84,9 @@ const DatePicker = (props) => {
       )
     );
 
-    history.push('/dashboard');
+    await props.getTokes(props.user_id, history);
+
+    props.handleClose();
   };
 
   return (
@@ -136,8 +139,7 @@ const DatePicker = (props) => {
               className={classes.button}
               variant="contained"
               color="secondary"
-              component={Link}
-              to="/dashboard"
+              onClick={props.handleClose}
             >
               Cancel
             </Button>
@@ -156,4 +158,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {})(DatePicker);
+export default connect(mapStateToProps, { getTokes })(DatePicker);
